@@ -1,5 +1,6 @@
 package atu.ie.week3_recap;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -20,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping("add")
-    public Product addProduct(@RequestBody Product newProduct) {
+    public Product addProduct(@Valid @RequestBody Product newProduct) {
         return productService.addProduct(newProduct);
     }
 
