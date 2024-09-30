@@ -9,5 +9,4 @@ public class Week3RecapApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Week3RecapApplication.class, args);
 	}
-
 }
