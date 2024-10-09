@@ -1,9 +1,10 @@
-FROM openjdk:17
+FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
-COPY target/Container-0.0.1-SNAPSHOT.jar /app
+COPY target/Week3_Recap-0.0.1-SNAPSHOT.jar /app
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "Container-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "Week3_Recap-0.0.1-SNAPSHOT.jar"]
+
