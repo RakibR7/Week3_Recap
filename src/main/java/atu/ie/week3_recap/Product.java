@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    @NotNull
+    @NotNull(message = "must not be empty")
     private long id;
-
-    @NotBlank(message = "invalid must enter name")
-    @Size(min = 1, max=25, message = "Name must be between 1 to 25")
+    @NotBlank(message = "A value need to be entered")
+    @Size(max=25, message = "Name must be between 3 to 25 characters")
     private String name;
-
     @Positive
     private double price;
 }

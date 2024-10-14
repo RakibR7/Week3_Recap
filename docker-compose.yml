@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  product-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - inventory-service
+    networks:
+      - app-network
+
+  warehouse-service:
+    build:
+      context: .
+      dockerfile: DockerfileWarehouse
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

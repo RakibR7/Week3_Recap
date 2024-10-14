@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products/")
+@RequestMapping("/products")
 public class ProductController {
     private final ProductService productService;
     private final Inventory inventory;
@@ -19,20 +19,20 @@ public class ProductController {
         this.inventory = inventory;
     }
 
-    @GetMapping("get")
+    @GetMapping("/get")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public String addProduct(@Valid @RequestBody Product newProduct) {
         productService.addProduct(newProduct);
         String responseFromInventory = inventory.storeProduct(newProduct);
         return "Product successfully created\n" + responseFromInventory;
     }
 
-    @PutMapping("edit/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<String> editProduct(@Valid @PathVariable long id, @RequestBody Product changedProduct) {
         boolean status = productService.editProduct(id, changedProduct);
 
@@ -42,7 +42,7 @@ public class ProductController {
             return new ResponseEntity<>("Product not found\n", HttpStatus.BAD_REQUEST);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> editProduct(@Valid @PathVariable long id) {
         boolean status = productService.deleteProduct(id);
 
